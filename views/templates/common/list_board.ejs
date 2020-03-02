@@ -1,0 +1,18 @@
+<section class="board cover">
+	<div class="container J_board clearfix">
+    <!-- {text: '没有搜索到相关数据'   } 这里是ctx上下文的数据，然后传入no_data_tip.ejs中进行使用 -->
+		<% if (phoneData.length <= 0) { %>
+		  <%- include('no_data_tip.ejs', {
+		  	text: '没有搜索到相关数据'         
+		  }) %>
+		<% } else { %>
+			<% for (var i = 0; i < phoneData.length; i ++) { %>
+        <%- include('sub/board_card.ejs', {
+        	i,
+        	data: phoneData[i]
+        }) %>
+			<% } %>
+		<% } %>
+		
+	</div>
+</section>

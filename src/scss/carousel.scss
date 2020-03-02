@@ -1,0 +1,76 @@
+.carousel {
+	.car-wrapper {
+		position: relative;
+		width: 1226px;
+		height: 460px;
+		margin: 0 auto;
+
+		.car-list {
+			position: relative;
+			height: 100%;
+
+			.car-item {
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+
+				&.active {
+					display: block;
+				}
+			}
+		}
+
+		.indicator-list {
+			position: absolute;
+			right: 30px;
+			bottom: 20px;
+			height: 21px;
+
+      .indicator-item {
+      	display: block;
+      	float: left;
+      	width: 6px;
+      	height: 6px;
+      	margin: 5px 4px;
+      	border: 2px solid #999;
+      	background-color: #666; 
+      	border-radius: 50%;
+
+      	&.current,
+      	&:hover {
+      		background-color: #fff;
+      	}
+      }
+		}
+
+		.car-control {
+			position: absolute;
+			top: 50%;
+			z-index: 1;
+			width: 24px;
+			height: 40px;
+			margin-top: -20px;
+      background-color: rgba(0, 0, 0, .2);
+      color: #fff;
+      line-height: 40px;
+      font-size: 12px;
+			cursor: pointer;
+			transition: background-color .2s;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, .4);
+			}
+
+			&:first-of-type {
+				left: 0;
+			}
+
+			&:last-child {
+				right: 0;
+			}
+		}
+	}
+}

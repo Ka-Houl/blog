@@ -1,0 +1,67 @@
+<%- include('layout/head.ejs', { pageConf }) %>
+
+<div id="app">
+	<%- include('templates/common/header.ejs', {
+	 fieldData, 
+	 phoneData 
+	}) %>
+
+	<%- include('templates/index/carousel.ejs', {
+		swiperData
+	}) %>
+
+	<%- include('templates/index/home_title.ejs', {
+	 title: '手机上新' 
+	}) %>
+
+	<%-include('templates/common/list_board.ejs', {
+		phoneData: phoneData.filter(function (item) {
+      if (item.new == 1) {
+      	return true;
+      }
+		})
+	}) %>
+
+	<%- include('templates/index/home_title.ejs', {
+	 title: '超值手机' 
+	}) %>
+
+	<%-include('templates/common/list_board.ejs', {
+		phoneData: phoneData.filter(function (item) {
+      if (item.most_value == 1) {
+      	return true;
+      }
+		})
+	}) %>
+
+	<%- include('templates/index/home_title.ejs', {
+	 title: '官方推荐' 
+	}) %>
+
+	<%-include('templates/common/list_board.ejs', {
+		phoneData: phoneData.filter(function (item) {
+      if (item.recom == 1) {
+      	return true;
+      }
+		})
+	}) %>
+
+	<%- include('templates/common/footer.ejs') %>
+</div>
+
+<%- include('datas/data.ejs', {
+	domId: 'J_fieldData',
+	data: fieldData 
+}) %>
+
+<%- include('datas/data.ejs', { 
+	domId: 'J_phoneData',
+	data: phoneData 
+}) %>
+
+<%- include('datas/data.ejs', { 
+	domId: 'J_swiperData',
+	data: swiperData 
+}) %>
+
+<%- include('layout/foot.ejs', { pageConf }) %>

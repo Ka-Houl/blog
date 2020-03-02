@@ -1,0 +1,31 @@
+<header class="header cover">
+	<div class="container">
+		
+    <%- include('sub/logo.ejs') %>
+
+		<nav class="hd-nav J_nav">
+
+			<% for (var i = 0; i < fieldData.length; i ++) { %> 
+        <%- include('sub/nav_item.ejs', {
+        	data: fieldData[i]
+        }) %>
+			<% } %>
+
+			<div class="nav-menu">
+				<ul class="container J_navMenu clearfix">
+
+					<% for (var i = 0; i < 7; i ++) { %> 
+            <%- include('sub/phone_card.ejs', {
+            	i,
+            	data: phoneData[i]
+            }) %>
+					<% } %>
+
+				</ul>
+			</div>
+		</nav>
+		
+    <%- include('sub/header_search.ejs') %>
+
+	</div>
+</header>

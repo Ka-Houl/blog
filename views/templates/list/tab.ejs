@@ -1,0 +1,22 @@
+<section class="tab">
+	<div class="container J_tab">
+		<div class="tab-row">
+			<div class="tab-title">
+				<p class="title">分类：</p>
+			</div>
+			<div class="tab-item current">
+				<a href="javascript:;" class="all" data-field="all">全部</a>
+			</div>
+
+			<% for (var i = 0; i < fieldData.length; i ++) { %>
+        <%- include('sub/tab_item.ejs', {
+        	data: fieldData[i]
+        }) %>
+			<% } %>
+			
+		</div>
+		
+    <%- include('sub/tab_search.ejs') %>
+
+	</div>
+</section>

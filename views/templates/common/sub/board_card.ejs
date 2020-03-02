@@ -1,0 +1,10 @@
+<div class="<%= i % 5 === 0 ? 'card first' : 'card' %>">
+	<a href="./detail/<%= data.id %>" target="_blank">
+		<div class="card-img">
+			<img src="<%= JSON.parse(data.pics)[0][0][0] %>" alt="<%= data.phone_name %>" />
+		</div>
+		<h3 class="title"><%= data.phone_name %></h3>
+		<p class="slogan"><%= data.slogan.substr(0, 10) %></p>
+		<p class="price"><%= data.default_price %>元起</p>
+	</a>
+</div>

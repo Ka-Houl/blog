@@ -1,0 +1,30 @@
+<%- include('layout/head.ejs', { pageConf }) %>
+<div id="app">
+
+	<%- include('templates/common/header.ejs', {
+	 fieldData, 
+	 phoneData 
+	}) %>
+
+	<%- include('templates/list/tab.ejs', {
+		fieldData
+	}) %>
+
+	<%-include('templates/common/list_board.ejs', {
+		phoneData: searchData
+	}) %>
+
+	<%- include('templates/common/footer.ejs') %>
+</div>
+
+<%- include('datas/data.ejs', {
+	domId: 'J_fieldData',
+	data: fieldData 
+}) %>
+
+<%- include('datas/data.ejs', { 
+	domId: 'J_phoneData',
+	data: phoneData 
+}) %>
+
+<%- include('layout/foot.ejs', { pageConf }) %>

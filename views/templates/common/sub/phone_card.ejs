@@ -1,0 +1,11 @@
+<li class="phone-card">
+	<a href="./detail/<%= data.id %>" target="_blank">
+		<div class="<%= !i ? 'thumb first' : 'thumb' %>">
+			<img src="<%= JSON.parse(data.pics)[0][0][0] %>" alt="<%= data.phone_name %>" />
+		</div>
+		<div class="info">
+			<h3><%= data.phone_name %></h3>
+			<p><%= data.default_price %>元起</p>
+		</div>
+	</a>
+</li>

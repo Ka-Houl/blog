@@ -1,0 +1,18 @@
+.board-title {
+	width: 1226px;
+	height: 58px;
+	margin: 30px auto 0;
+	line-height: 58px;
+	font-size: 16px;
+
+	.title {
+		float: left;
+		font-size: 24px;
+		color: #000;
+	}
+
+	.all {
+		float: right;
+		color: #888;
+	}
+}

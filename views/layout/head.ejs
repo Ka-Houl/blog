@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keyword" content="<%= pageConf.head.keyword %>" />
+	<meta name="description" content="<%= pageConf.head.description %>" />
+	<title><%= pageConf.head.title %></title>
+
+	<% for (var i = 0; i < pageConf.stylesheet.length; i ++) { %>
+	  <link rel="stylesheet" href="<%= pageConf.stylesheet[i] %>" />
+	<% } %>
+</head>
+<body>

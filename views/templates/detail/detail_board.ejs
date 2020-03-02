@@ -1,0 +1,49 @@
+<div class="detail-board cover clearfix">
+	<div class="container">
+		<div class="left">
+			
+      <%- include('sub/pic.ejs', {
+      	phoneDetail
+      }) %>
+
+		</div>
+	    <div class="right">
+	    	
+        <%- include('sub/base_info.ejs', {
+        	phoneDetail
+        }) %>
+
+	    	<%- include('sub/detail_title.ejs', {
+	    		title: '手机版本'
+	    	}) %>
+
+	    	<div class="content-wrapper clearfix">
+
+	    		<% var versions = JSON.parse(phoneDetail.version_info)  %>
+	    		<% for (var i = 0; i < versions.length; i ++) { %>
+            <%- include('sub/version_item.ejs', {
+            	i,
+            	item: versions[i]
+            }) %>
+					<% } %>
+
+	    	</div>
+
+	    	<%- include('sub/detail_title.ejs', {
+	    		title: '手机颜色'
+	    	}) %>
+
+	    	<div class="content-wrapper clearfix">
+
+	    		<% var colors = JSON.parse(phoneDetail.color)  %>
+	    		<% for (var i = 0; i < colors.length; i ++) { %>
+            <%- include('sub/color_item.ejs', {
+            	i,
+            	item: colors[i]
+            }) %>
+					<% } %>
+					
+	    	</div>
+	    </div>
+	</div>
+</div>

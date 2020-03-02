@@ -1,0 +1,26 @@
+<section class="carousel cover">
+	<div class="car-wrapper J_carousel">
+		<div class="car-list">
+
+			<% for (var i = 0; i < swiperData.length; i ++) { %>
+        <%- include('sub/car_item.ejs', {
+        	i,
+        	data: swiperData[i]
+        }) %>
+			<% } %>
+
+		</div>
+		<div class="indicator-list" style="width: <%= 18 * swiperData.length %>px">
+
+		  <% for (var i = 0; i < swiperData.length; i ++) { %>
+        <%- include('sub/indicator_item.ejs', {
+        	i
+        }) %>
+		  <% } %>
+		  
+	  </div>
+		
+    <%- include('sub/car_control.ejs') %>
+
+	</div>
+</section>
