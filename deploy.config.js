@@ -18,8 +18,8 @@ module.exports = {
             host: '47.92.198.10',
 
             ref: 'origin/master',
-            repo: 'https://gitee.com/Ka-houl/xiaomi_mobile_pro.git',
-            // repo: 'git@gitee.com:Ka-houl/xiaomi_mobile_pro.git',
+            // repo: 'https://gitee.com/Ka-houl/xiaomi_mobile_pro.git',
+            repo: 'git@github.com:Ka-Houl/blog.git',
             path: '/www/xiaomi_mobile_pro/production',
             'pre-deploy': 'git fetch --all',
             'post-deploy':
