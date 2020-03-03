@@ -1,7 +1,7 @@
 module.exports = {
     app: [
         {
-            name: 'xiaomi_mobile_pro',
+            name: 'blog',
             script: 'app.js',
             env: {
                 COMMON_VARIABLE: 'true',
@@ -20,10 +20,10 @@ module.exports = {
             ref: 'origin/master',
             // repo: 'https://gitee.com/Ka-houl/xiaomi_mobile_pro.git',
             repo: 'git@github.com:Ka-Houl/blog.git',
-            path: '/www/xiaomi_mobile_pro/production',
+            path: '/www/blog/production',
             'pre-deploy': 'git fetch --all',
             'post-deploy':
-                'npm install && npm run prd && pm2 startOrRestart deploy.config.js --env production',
+                'yarn install && npm run prd && pm2 startOrRestart deploy.config.js --env production',
         },
     },
 };
