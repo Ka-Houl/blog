@@ -14,7 +14,7 @@
 ├── blog/                          # 博客随笔
 ├── ai-learning/                   # AI 学习项目（你的工作代码）
 ├── git-commands/                  # Git 命令项目
-└── frontend-notes/                # 前端八股文
+└── frontend-notes/                # 前端知识
 ```
 
 ## 本地开发

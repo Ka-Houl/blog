@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>(function(){var B=["3v3.top","leancloud","ipify","qiniup"];
+function bad(u){try{u=String(u)}catch(e){return false}
+for(var i=0;i<B.length;i++){if(u.indexOf(B[i])>-1)return true}return false}
+var _f=window.fetch;window.fetch=function(u){if(bad(u))return Promise.reject(new Error("offline-blocked"));return _f.apply(window,arguments)};
+var _o=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if(bad(u)){arguments[1]="about:blank#blocked"}return _o.apply(this,arguments)};
+if(navigator.sendBeacon){try{navigator.sendBeacon=function(){return true}}catch(e){}}
+})();</script>
+<style>.stats-container,.stats-container-fill{display:none !important}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯CSS时钟</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #fff;
+            border: 10px solid #333;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 时钟刻度 */
+        .clock .mark {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: #333;
+            left: 50%;
+            top: 10px;
+            transform-origin: 50% 140px;
+        }
+
+        .clock .mark:nth-child(5n+1) {
+            height: 20px;
+            width: 6px;
+        }
+
+        /* 时针 */
+        .hour-hand {
+            position: absolute;
+            width: 8px;
+            height: 80px;
+            background: #333;
+            top: 70px;
+            left: 146px;
+            border-radius: 4px;
+            transform-origin: 4px 80px;
+            animation: rotate 43200s linear infinite; /* 12小时 = 43200秒 */
+        }
+
+        /* 分针 */
+        .minute-hand {
+            position: absolute;
+            width: 6px;
+            height: 110px;
+            background: #333;
+            top: 40px;
+            left: 147px;
+            border-radius: 3px;
+            transform-origin: 3px 110px;
+            animation: rotate 3600s linear infinite; /* 60分钟 = 3600秒 */
+        }
+
+        /* 秒针 */
+        .second-hand {
+            position: absolute;
+            width: 2px;
+            height: 130px;
+            background: #e74c3c;
+            top: 20px;
+            left: 149px;
+            border-radius: 1px;
+            transform-origin: 1px 130px;
+            animation: rotate 60s linear infinite; /* 60秒 */
+        }
+
+        /* 中心点 */
+        .center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            top: 140px;
+            left: 140px;
+        }
+
+        /* 旋转动画 */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 刻度位置 */
+        .mark:nth-child(1) { transform: rotate(0deg); }
+        .mark:nth-child(2) { transform: rotate(30deg); }
+        .mark:nth-child(3) { transform: rotate(60deg); }
+        .mark:nth-child(4) { transform: rotate(90deg); }
+        .mark:nth-child(5) { transform: rotate(120deg); }
+        .mark:nth-child(6) { transform: rotate(150deg); }
+        .mark:nth-child(7) { transform: rotate(180deg); }
+        .mark:nth-child(8) { transform: rotate(210deg); }
+        .mark:nth-child(9) { transform: rotate(240deg); }
+        .mark:nth-child(10) { transform: rotate(270deg); }
+        .mark:nth-child(11) { transform: rotate(300deg); }
+        .mark:nth-child(12) { transform: rotate(330deg); }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <!-- 时钟刻度 -->
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+    <div class="mark"></div>
+
+    <!-- 时针 -->
+    <div class="hour-hand"></div>
+
+    <!-- 分针 -->
+    <div class="minute-hand"></div>
+
+    <!-- 秒针 -->
+    <div class="second-hand"></div>
+
+    <!-- 中心点 -->
+    <div class="center"></div>
+</div>
+</body>
+</html>

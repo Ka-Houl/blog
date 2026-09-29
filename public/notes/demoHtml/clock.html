@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>(function(){var B=["3v3.top","leancloud","ipify","qiniup"];
+function bad(u){try{u=String(u)}catch(e){return false}
+for(var i=0;i<B.length;i++){if(u.indexOf(B[i])>-1)return true}return false}
+var _f=window.fetch;window.fetch=function(u){if(bad(u))return Promise.reject(new Error("offline-blocked"));return _f.apply(window,arguments)};
+var _o=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if(bad(u)){arguments[1]="about:blank#blocked"}return _o.apply(this,arguments)};
+if(navigator.sendBeacon){try{navigator.sendBeacon=function(){return true}}catch(e){}}
+})();</script>
+<style>.stats-container,.stats-container-fill{display:none !important}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时同步时钟</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: white;
+            border: 8px solid #333;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        /* 刻度 */
+        .scale {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .scale span {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background: #333;
+            left: 50%;
+            top: 10px;
+            transform-origin: 50% calc(150px - 10px); /* 刻度旋转中心 */
+        }
+
+        /* 12/3/6/9点特殊刻度（更长） */
+        .scale span:nth-child(1),
+        .scale span:nth-child(16),
+        .scale span:nth-child(31),
+        .scale span:nth-child(46) {
+            height: 20px;
+            width: 6px;
+            background: #e74c3c;
+        }
+
+        /* 数字 */
+        .numbers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .numbers span {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 指针 */
+        .hour-hand, .minute-hand, .second-hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: bottom center; /* 以底部为旋转中心 */
+            border-radius: 5px;
+        }
+
+        .hour-hand {
+            width: 6px;
+            height: 80px;
+            background: #333;
+            margin-left: -3px;
+            margin-top: -80px; /* 向上偏移自身长度 */
+        }
+
+        .minute-hand {
+            width: 4px;
+            height: 110px;
+            background: #555;
+            margin-left: -2px;
+            margin-top: -110px;
+        }
+
+        .second-hand {
+            width: 2px;
+            height: 130px;
+            background: #e74c3c;
+            margin-left: -1px;
+            margin-top: -130px;
+            z-index: 10; /* 秒针在最上层 */
+        }
+
+        /* 中心圆点 */
+        .center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <!-- 刻度 -->
+    <div class="scale"></div>
+    <!-- 数字 -->
+    <div class="numbers"></div>
+    <!-- 指针 -->
+    <div class="hour-hand"></div>
+    <div class="minute-hand"></div>
+    <div class="second-hand"></div>
+    <!-- 中心圆点 -->
+    <div class="center"></div>
+</div>
+
+<script>
+    // 初始化刻度和数字
+    function initClock() {
+        const scale = document.querySelector('.scale');
+        const numbers = document.querySelector('.numbers');
+
+        // 生成60个刻度（每6度一个）
+        for (let i = 0; i < 60; i++) {
+            const span = document.createElement('span');
+            span.style.transform = `rotate(${i * 6}deg)`;
+            scale.appendChild(span);
+        }
+
+        // 生成12个数字（30度一个）
+        for (let i = 1; i <= 12; i++) {
+            const num = document.createElement('span');
+            const angle = i * 30; // 12小时对应360度，每小时30度
+            // 计算数字位置（基于圆心的极坐标转换）
+            const x = 150 + 120 * Math.sin(angle * Math.PI / 180);
+            const y = 150 - 120 * Math.cos(angle * Math.PI / 180);
+            num.style.left = `${x}px`;
+            num.style.top = `${y}px`;
+            num.textContent = i;
+            numbers.appendChild(num);
+        }
+    }
+
+    // 更新指针角度（核心：与实时时间同步）
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours() % 12; // 转为12小时制
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        // 计算角度：
+        // 时针：每小时30度（360/12），每分钟额外走0.5度（30/60）
+        const hourAngle = hours * 30 + minutes * 0.5;
+        // 分针：每分钟6度（360/60），每秒钟额外走0.1度（6/60）
+        const minuteAngle = minutes * 6 + seconds * 0.1;
+        // 秒针：每秒钟6度（360/60）
+        const secondAngle = seconds * 6;
+
+        // 应用角度
+        document.querySelector('.hour-hand').style.transform = `rotate(${hourAngle}deg)`;
+        document.querySelector('.minute-hand').style.transform = `rotate(${minuteAngle}deg)`;
+        document.querySelector('.second-hand').style.transform = `rotate(${secondAngle}deg)`;
+    }
+
+    // 初始化并启动时钟
+    initClock();
+    updateClock(); // 立即更新一次
+    setInterval(updateClock, 1000); // 每秒更新一次
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<script>(function(){var B=["3v3.top","leancloud","ipify","qiniup"];
+function bad(u){try{u=String(u)}catch(e){return false}
+for(var i=0;i<B.length;i++){if(u.indexOf(B[i])>-1)return true}return false}
+var _f=window.fetch;window.fetch=function(u){if(bad(u))return Promise.reject(new Error("offline-blocked"));return _f.apply(window,arguments)};
+var _o=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if(bad(u)){arguments[1]="about:blank#blocked"}return _o.apply(this,arguments)};
+if(navigator.sendBeacon){try{navigator.sendBeacon=function(){return true}}catch(e){}}
+})();</script>
+<style>.stats-container,.stats-container-fill{display:none !important}</style>
+    <meta charset="UTF-8">
+    <title>LOOP</title>
+    <style>
+        @keyframes loop {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .box {
+            white-space: nowrap;
+        }
+
+        .scrollContent {
+            color: rebeccapurple;
+            width: 600px;
+            display: inline-block;
+            text-align: center;
+            animation: loop 3s linear infinite;
+            text-shadow: 600px 0 currentColor, 1200px 0 currentColor, 1800px 0 currentColor, 2400px 0 currentColor;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="scrollContent">
+        这是一段可以滚动的文本
+    </div>
+</div>
+</body>
+
+</html>

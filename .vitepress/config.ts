@@ -4,16 +4,19 @@ import { defineConfig } from 'vitepress'
 // 若以后把仓库名改为 ka-houl.github.io（用户页），把 base 改回 '/' 即可
 export default defineConfig({
   base: '/blog/',
+  // 八股文页面是 public/notes 下的静态 HTML（非 VitePress 生成页），其链接会被死链检测误判，故关闭
+  ignoreDeadLinks: true,
   title: '小虾米的博客',
-  description: '个人博客：AI 学习、Git 命令、前端八股文',
-  cleanUrls: true,
+  description: '个人博客：AI 学习、Git 命令、前端知识',
+  // 八股文页面是 public/notes 下的静态 HTML，cleanUrls 会去掉 .html 导致静态文件 404，故关闭
+  cleanUrls: false,
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },
       { text: 'AI 学习', link: '/ai-learning/' },
       { text: 'Git 命令', link: '/git-commands/' },
-      { text: '前端八股文', link: '/frontend-notes/' },
+      { text: '前端知识', link: '/frontend-notes/' },
       { text: '关于', link: '/about/' },
     ],
     // 显式侧边栏：新增文章时在此追加对应 link 即可（VitePress 1.x 对按路径 'auto' 支持不完善）
@@ -29,10 +32,10 @@ export default defineConfig({
       ],
       '/ai-learning/': [
         {
-          text: 'AI 学习项目',
+          text: 'AI 学习',
           items: [
-            { text: '概览', link: '/ai-learning/' },
-            { text: 'AI 学习概览', link: '/ai-learning/intro' },
+            { text: '学习总览', link: '/ai-learning/' },
+            { text: 'AGENTS 协作规则', link: '/ai-learning/AGENTS' },
           ],
         },
       ],
@@ -47,10 +50,9 @@ export default defineConfig({
       ],
       '/frontend-notes/': [
         {
-          text: '前端八股文',
+          text: '前端知识',
           items: [
-            { text: '概览', link: '/frontend-notes/' },
-            { text: 'JavaScript 基础', link: '/frontend-notes/js-basics' },
+            { text: '文章总览', link: '/frontend-notes/' },
           ],
         },
       ],

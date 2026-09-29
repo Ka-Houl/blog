@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: 小虾米的博客
-  text: AI 学习 · Git 命令 · 前端八股文
+  text: AI 学习 · Git 命令 · 前端知识
   tagline: 记录学习与工作的技术笔记
   actions:
     - theme: brand
@@ -20,7 +20,7 @@ features:
     details: 常用 Git 命令整理与踩坑记录。
     link: /git-commands/
     linkText: 前往
-  - title: 前端八股文
+  - title: 前端知识
     details: 前端面试高频知识点系统梳理。
     link: /frontend-notes/
     linkText: 前往
