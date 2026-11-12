@@ -1,27 +1,53 @@
 ---
 layout: home
+pageClass: knowledge-home
+title: 小虾米的知识库
 hero:
-  name: 小虾米的博客
-  text: AI 学习 · Git 命令 · 前端知识
-  tagline: 记录学习与工作的技术笔记
+  name: 小虾米的知识库
+  text: 技术笔记与知识整理
+  tagline: AI 大模型与 Agent · 前端与图形 · 工程实践
   actions:
     - theme: brand
-      text: 进入博客
-      link: /blog/
+      text: AI 知识体系
+      link: /ai/
     - theme: alt
-      text: AI 学习项目
-      link: /ai-learning/
+      text: 前端与图形
+      link: /frontend/
+    - theme: alt
+      text: 关于本站
+      link: /about/
 features:
-  - title: AI 学习项目
-    details: 收集 AI 相关学习与实战代码笔记。
-    link: /ai-learning/
-    linkText: 前往
-  - title: Git 命令项目
-    details: 常用 Git 命令整理与踩坑记录。
-    link: /git-commands/
-    linkText: 前往
-  - title: 前端知识
-    details: 前端面试高频知识点系统梳理。
-    link: /frontend-notes/
-    linkText: 前往
+  - title: AI 大模型与 Agent
+    details: 基础理论、Prompt、RAG、Agent 编排与企业级工程化的系统整理。
+    link: /ai/
+    linkText: 查看
+  - title: 前端与图形
+    details: JavaScript 核心、前端工程化，以及 Three.js 渲染管线九章。
+    link: /frontend/
+    linkText: 查看
+  - title: 工程实践
+    details: Git 场景速查与 AI 编程工作流。
+    link: /engineering/
+    linkText: 查看
+  - title: 观点与随笔
+    details: 关于 AI 编程的阅读笔记与个人判断。
+    link: /essays/
+    linkText: 查看
 ---
+
+## 内容目录
+
+按主题整理的技术笔记，当前收录以下栏目。
+
+| 栏目 | 内容 |
+| --- | --- |
+| [AI 大模型与 Agent](./ai/index.md) | 基础理论、Prompt、RAG、Agent 编排、企业级工程化；附实战复盘与面试速查 |
+| [前端与图形](./frontend/index.md) | JavaScript 核心、前端工程化，以及 Three.js 渲染管线九章 |
+| [工程实践](./engineering/index.md) | Git 场景化速查、AI 编程工作流 |
+| [观点与随笔](./essays/index.md) | 关于 AI 编程的阅读笔记与个人判断 |
+
+## 最近整理
+
+- 2026-11 · 新增 AI 大模型与 Agent 知识体系，归纳自资料库与 Example 1～6 实战记录
+- 2026-11 · 新增 Three.js 渲染管线九章，并入前端栏目
+- 2026-11 · 目录按主题重新归类，逐日实验记录与外部离线镜像移入归档
