@@ -45,9 +45,3 @@ features:
 | [前端与图形](./frontend/index.md) | JavaScript 核心、前端工程化，以及 Three.js 渲染管线九章 |
 | [工程实践](./engineering/index.md) | Git 场景化速查、AI 编程工作流 |
 | [观点与随笔](./essays/index.md) | 关于 AI 编程的阅读笔记与个人判断 |
-
-## 最近整理
-
-- 2026-11 · 新增 AI 大模型与 Agent 知识体系，归纳自资料库与 Example 1～6 实战记录
-- 2026-11 · 新增 Three.js 渲染管线九章，并入前端栏目
-- 2026-11 · 目录按主题重新归类，逐日实验记录与外部离线镜像移入归档
